@@ -217,8 +217,7 @@ Betweenness centrality on the 522,919-node subgraph takes approximately 11 minut
 ---
 
 ## Authors
-
-Divyansh Purohit
-Prathamesh Samal
-Arthur Johannes Sliwinski
-Naga Dheeraj Mukkara
+Arthur Johannes Sliwinski;
+Divyansh Purohit;
+Naga Dheeraj Mukkara;
+Prathamesh Samal;
