@@ -1,25 +1,21 @@
-# PEPs & Offshore Shell Companies — Knowledge Graph Pipeline
+# PEPs & Offshore Shell Companies: Knowledge Graph Pipeline
 
 Knowledge graph for investigative journalism that merges the ICIJ Offshore Leaks database with OpenSanctions Politically Exposed Persons data and consolidated sanctions/warrants records to expose multi-hop financial connections between public officials and offshore shell companies.
 
-Built as a group project for the **Knowledge Engineering** course. The project follows a paired-group structure: one group acts as the **Client** (defining research questions) and the other as the **Knowledge Engineers** (building the solution).
+Built as a group project for the **Knowledge Engineering** course. 
 
----
 
-## Client Context
 
 **Client role:** Anti-corruption NGO / investigative journalism group auditing conflicts of interest and hidden wealth among global public officials.
 
 **Why a knowledge graph?** Relational databases struggle with the deep, recursive connections between public figures and secretive offshore shell companies. A knowledge graph that merges public entity data with offshore financial leaks allows efficient pattern-matching to expose these hidden networks.
 
----
 
 ## Research Questions
 
 1. Which publicly known politicians or government officials are directly or indirectly connected to offshore financial entities within **three degrees of separation**?
 2. What are the most common **intermediary nodes** (e.g., specific law firms, wealth managers, or banks) that serve as the structural bridge between politically exposed persons and multiple offshore shell companies?
 
----
 
 ## Data Sources
 
@@ -93,9 +89,9 @@ ICIJ Offshore Leaks CSVs          OpenSanctions PEP Export
 
 ## Key Findings
 
-**RQ1 — PEP Connections:** High-confidence PEP-matched officers appear as direct (1-hop) officers of tax-haven shell companies across Panama Papers, Pandora Papers, and Offshore Leaks simultaneously, confirming persistent multi-leak offshore exposure for identified politicians.
+**RQ1: PEP Connections:** High-confidence PEP-matched officers appear as direct (1-hop) officers of tax-haven shell companies across Panama Papers, Pandora Papers, and Offshore Leaks simultaneously, confirming persistent multi-leak offshore exposure for identified politicians.
 
-**RQ2 — Top Bridge Intermediaries (by betweenness centrality on the 3-hop subgraph):**
+**RQ2: Top Bridge Intermediaries (by betweenness centrality on the 3-hop subgraph):**
 
 | Intermediary | Betweenness |
 |---|---|
@@ -113,13 +109,7 @@ A betweenness score of 0.267 means 26.7% of all shortest paths in the PEP subgra
 
 ```
 .
-├── project_code.ipynb               # Main pipeline notebook (production)
-├── project_code_ke_v3.ipynb        # v3 — ISO country fix + multi-country matching
-├── project_code_ke_v2.ipynb        # v2 — deprecated (broken cell indices)
-├── project_code_ke.ipynb           # v1 — initial fixed version
-├── report.tex                      # LaTeX report (Datasheets for Datasets template)
-├── context.txt                     # Full version history and technical context
-├── kg_structure_and_queries.txt    # Graph schema, design arguments, all Cypher queries
+├── project_code.ipynb               # Main pipeline notebook 
 ├── data/
 │   ├── icij/                       # ICIJ Offshore Leaks CSVs (not committed)
 │   │   ├── nodes-entities.csv
@@ -140,9 +130,12 @@ A betweenness score of 0.267 means 26.7% of all shortest paths in the PEP subgra
 │   │   └── targets.simple.csv
 │   └── warrants and criminal entities/
 │       └── targets.simple.csv
-├── pep_matches_v3.csv              # Entity matching cache (72MB, not committed)
-├── betweenness_pep_subgraph.csv    # Betweenness centrality results
-└── knowledge_graph.gexf            # Full graph export for Gephi
+└── output/                                 # Generated on first run — not committed
+    ├── fig_icij_distributions.png          # ICIJ node/leak/jurisdiction distribution plots
+    ├── pep_matches_v3.csv                  # Entity matching cache (skip re-run on reload)
+    ├── pep_matches.csv                     # Enriched matching results with position info
+    ├── rq1_pep_offshore_connections.csv    # RQ1 query results (PEP-entity pairs, hop distance)
+    └── betweenness_pep_subgraph.csv        # RQ2 betweenness centrality scores (all nodes)
 ```
 
 ---
@@ -152,7 +145,7 @@ A betweenness score of 0.267 means 26.7% of all shortest paths in the PEP subgra
 ### Requirements
 
 ```bash
-pip install pandas networkx neo4j rapidfuzz joblib pyvis matplotlib
+pip install -r requirements.txt
 ```
 
 ### Data
@@ -220,18 +213,12 @@ Betweenness centrality on the 522,919-node subgraph takes approximately 11 minut
 - `is_sanctioned` — matched to OpenSanctions consolidated sanctions
 - `is_wanted` — matched to Interpol Red Notice or US SAM debarment
 
----
-
-## Licence
-
-- **ICIJ data:** Available for non-commercial journalistic and research use.
-- **OpenSanctions data:** CC0 (public domain).
-- **Code:** MIT.
 
 ---
 
 ## Authors
 
-Prathamesh Samal · Divyansh Purohit · Naga Dheeraj Mukkara · Arthur Johannes Sliwinski
-
-*Knowledge Engineering Group Project — 2025/2026*
+Divyansh Purohit
+Prathamesh Samal
+Arthur Johannes Sliwinski
+Naga Dheeraj Mukkara
