@@ -1,0 +1,21 @@
+
+# outputs
+output/
+data/
+data_opensanctions
+# large graph exports
+knowledge_graph*.gexf
+config
+*DS_Store
+.ipynb_checkpoints
+venv
+01_knowledge_graph_pipeline.ipynb
+02_pipeline*.ipynb
+data_sources_reference*
+fig_entity_matching.png
+fig_kg_overview.png
+fig_wikidata_distributions.png
+kg_structure_and_queries.*
+pipeline_diagram.*
+project_code_ke_v*.ipynb
+context*
