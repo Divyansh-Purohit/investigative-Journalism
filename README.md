@@ -13,8 +13,8 @@ Built as a group project for the **Knowledge Engineering** course.
 
 ## Research Questions
 
-1. Which publicly known politicians or government officials are directly or indirectly connected to offshore financial entities within **three degrees of separation**?
-2. What are the most common **intermediary nodes** (e.g., specific law firms, wealth managers, or banks) that serve as the structural bridge between politically exposed persons and multiple offshore shell companies?
+1. RQ1: Which publicly known politicians or government officials are directly or indirectly connected to offshore financial entities within **three degrees of separation**?
+2. RQ2: What are the most common **intermediary nodes** (e.g., specific law firms, wealth managers, or banks) that serve as the structural bridge between politically exposed persons and multiple offshore shell companies?
 
 
 ## Data Sources
